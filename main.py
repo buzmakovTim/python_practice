@@ -1,7 +1,12 @@
 from math import *
+from Student import Student
+
 # First Practice with Python!!!
 
-# For comments using '#'
+# For comments using '#' or ''' '''
+'''
+frfefwefefef
+'''
 
 #=======================================================================#
 # Variables
@@ -41,6 +46,8 @@ print(round(3.5))
 print(floor(4.6))
 print(sqrt(36))
 
+
+##################################################################################
 print("##########################################################################")
 print("Inputs from user")
 print("##########################################################################")
@@ -59,6 +66,7 @@ print("#########################################################################
 # print("Result is: " + str(result)) # we also have to convert to string as we cant concatenate string and int
 
 
+##################################################################################
 print("##########################################################################")
 print("List")
 print("##########################################################################")
@@ -100,6 +108,7 @@ print(friends)
 print(friends2)
 
 
+##################################################################################
 print("##########################################################################")
 print("Tuples")
 print("##########################################################################")
@@ -110,6 +119,8 @@ coordinates = (4, 5)
 print(coordinates[0])  # Prints 4
 print(coordinates)
 
+
+##################################################################################
 print("##########################################################################")
 print("Dictionary")
 print("##########################################################################")
@@ -129,10 +140,11 @@ monthConversions = {
     "Dec": "December"
 }
 
-print(monthConversions["Dec"])
+print(monthConversions["Dec"])  # Acess to the value by the key. Will throw error if key not found
+print(monthConversions.get("Novr", "Not a valid key"))  # Will use default value if key not found
 
 
-
+##################################################################################
 print("##########################################################################")
 print("Functions")
 print("##########################################################################")
@@ -151,6 +163,7 @@ def cube(num):
 print(cube(3))
 
 
+##################################################################################
 print("##########################################################################")
 print("If Statements")
 print("##########################################################################")
@@ -174,3 +187,160 @@ def max_num(num1, num2, num3):
         return num3
 
 print(max_num(34, 66, 755))
+
+
+##################################################################################
+print("##########################################################################")
+print("While loop")
+print("##########################################################################")
+
+i = 1
+while i <= 10:
+    print(i)
+    i += 1
+
+print("Done with loop")
+
+print("Game. Guess secret word")
+secret_word = "Timofey"
+guess = ""
+guess_count = 0
+guess_limit = 3
+out_of_guesses = False
+
+
+while guess != secret_word and not(out_of_guesses):
+    if guess_count < guess_limit:
+        guess = input("Enter guess: ")
+        guess_count += 1
+    else:
+        out_of_guesses = True
+
+if out_of_guesses:
+    print("Out of guesses, YOU LOSE!")
+else:
+    print("You win!")
+
+
+##################################################################################
+print("##########################################################################")
+print("For loop")
+print("##########################################################################")
+
+friends = ["Oleg", "Klim", "Dima", "Engeniy", "Denis"]
+
+for frined in friends:
+    print(frined)
+
+for index in range(10):  # Will print numbers from 0 to 9  (10 not included)
+    print(index)
+
+for index in range(3, 10):  # Will print numbers from 3 to 9  (10 not included)
+    print(index)
+
+for index in range(len(friends)):
+    print(friends[index])
+
+for index in range(5):
+    if index == 0:
+        print("First iteration")
+    else:
+        print("Not first")
+
+
+##################################################################################
+print("##########################################################################")
+print("Exponent Function")  # В степени
+print("##########################################################################")
+
+def raise_to_power(base_num, pow_num):
+    result = 1
+    for index in range(pow_num):
+        result = result * base_num
+    return result
+
+print(raise_to_power(3, 200))
+
+
+##################################################################################
+print("##########################################################################")
+print(" 2D list")
+print("##########################################################################")
+
+number_grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 8],
+    [0]
+]
+
+for row in number_grid:
+    for col in row:
+        print(col)
+
+
+##################################################################################
+print("##########################################################################")
+print(" Change all vowels to g ")  # Гласные
+print("##########################################################################")
+
+def translate(phrase):
+    translation = ""
+    for letter in phrase:
+        if letter in "AEIOUaeiou":
+            if letter.isupper():
+                translation = translation + "G"
+            else:
+                translation = translation + "g"
+        else:
+            translation = translation + letter
+    return translation
+
+print(translate(input("Enter the phrase: ")))
+
+
+##################################################################################
+print("##########################################################################")
+print("Try/Exept")  # Errors handling
+print("##########################################################################")
+
+try:
+    number = int(input("Enter a number: "))
+    print(number)
+except ZeroDivisionError:
+    print("Divided by zero")
+except ValueError as err:
+    print(err)
+
+
+##################################################################################
+print("##########################################################################")
+print("Read Files / Write ")
+print("##########################################################################")
+print("Reading")
+friends_file = open("Practice/TestFile.txt", "r")  # Opening mode r - read, w -write, a - append information, r+ read and write
+# we open the file and storr it to we variable. We HAVE to close the file as well
+
+print(friends_file.readable())  # Check if this file readable ir not
+# print(friends_file.read())  # Read all lines
+print("Or we can read lines")
+for employee in friends_file.readlines():
+    print(employee)
+friends_file.close()
+
+print("Appending to the file")
+friends_file = open("Practice/TestFile.txt", "a")
+friends_file.write("\nOlesy - Dubina")
+friends_file.close()
+
+
+print(int("07"))
+
+##################################################################################
+print("##########################################################################")
+print("Classes & Objects")  # importing from Student.py file
+print("##########################################################################")
+
+student1 = Student("Tim", "IT", 9.3, False)
+
+
